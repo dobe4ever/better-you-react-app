@@ -1,3 +1,5 @@
+// src/components/habits/HabitCard.js
+
 import React from 'react';
 import { RiCheckLine, RiMoreLine, RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiAlarmLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
@@ -8,6 +10,11 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
     personal: 'bg-blue-100 border-blue-300',
     health: 'bg-green-100 border-green-300',
     financial: 'bg-yellow-100 border-yellow-300',
+  };
+
+  const handleAction = (e, action) => {
+    e.stopPropagation();
+    action(habit.id);
   };
 
   return (
@@ -22,12 +29,9 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
           <div className="flex items-center">
             <IconButton
               icon={RiCheckLine}
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggle(habit.id);
-              }}
-              color={habit.isCompleted ? 'white' : 'orange'}
-              className={`mr-3 ${habit.isCompleted ? 'bg-green-500' : 'border-2 border-gray-300'}`}
+              onClick={(e) => handleAction(e, onToggle)}
+              isActive={habit.isCompleted}
+              className={`mr-3 ${habit.isCompleted ? 'bg-green-500 text-white' : 'border-2 border-gray-300'}`}
             />
             <div>
               <h3 className="font-semibold">{habit.name}</h3>
@@ -36,11 +40,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
           </div>
           <IconButton 
             icon={RiMoreLine}
-            onClick={(e) => {
-              e.stopPropagation();
-              onOpenMenu(e, habit.id);
-            }}
-            color="orange"
+            onClick={(e) => onOpenMenu(e)}
           />
         </div>
         <div className="flex justify-start items-center mt-auto">

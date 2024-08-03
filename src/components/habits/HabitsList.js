@@ -54,17 +54,14 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
         updatedHabit = { ...habit, priority: !habit.priority };
         break;
       case 'Set Deadline':
-        // You might want to open a date picker here
         updatedHabit = { ...habit, deadline: new Date().toISOString() };
         break;
       case 'Set Reminder':
-        // You might want to open a time picker here
         updatedHabit = { ...habit, reminder: new Date().toISOString() };
         break;
       case 'Delete':
         onDelete(selectedHabitId);
         break;
-      // Add more cases for other actions
       default:
         console.log(`Action ${action} not implemented`);
         return;

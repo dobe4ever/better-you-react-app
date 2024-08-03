@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+// src/components/common/ContextualMenu.js
+
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import theme from '../../styles/theme';
+import IconButton from './IconButton';
 
 const ContextualMenu = ({ isOpen, onClose, position, items }) => {
   const menuRef = useRef();
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -18,20 +21,60 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
     };
   }, [onClose]);
 
-  const getMenuPosition = () => {
-    switch (position) {
-      case 'top-left':
-        return { top: 0, left: 0 };
-      case 'top-right':
-        return { top: 0, right: 0 };
-      case 'bottom-left':
-        return { bottom: 0, left: 0 };
-      case 'bottom-right':
-        return { bottom: 0, right: 0 };
-      default:
-        return {};
+  useEffect(() => {
+    if (isOpen && menuRef.current) {
+      const menuRect = menuRef.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      let top, left;
+
+      if (typeof position === 'string') {
+        // Handle predefined positions
+        switch (position) {
+          case 'top-left':
+            top = 0;
+            left = 0;
+            break;
+          case 'top-right':
+            top = 0;
+            left = viewportWidth - menuRect.width;
+            break;
+          case 'bottom-left':
+            top = viewportHeight - menuRect.height;
+            left = 0;
+            break;
+          case 'bottom-right':
+            top = viewportHeight - menuRect.height;
+            left = viewportWidth - menuRect.width;
+            break;
+          default:
+            top = 0;
+            left = 0;
+        }
+      } else {
+        // Handle exact coordinates
+        top = position.y;
+        left = position.x;
+
+        // Adjust if menu would be off-screen
+        if (left + menuRect.width > viewportWidth) {
+          left = viewportWidth - menuRect.width - 10;
+        }
+        if (left < 10) {
+          left = 10;
+        }
+        if (top + menuRect.height > viewportHeight) {
+          top = viewportHeight - menuRect.height - 10;
+        }
+        if (top < 10) {
+          top = 10;
+        }
+      }
+
+      setMenuPosition({ top, left });
     }
-  };
+  }, [isOpen, position]);
 
   return (
     <AnimatePresence>
@@ -47,38 +90,42 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
           />
           <motion.div
             ref={menuRef}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
             style={{
               position: 'fixed',
               zIndex: 1000,
-              ...getMenuPosition(),
-              backgroundColor: theme.colors.white,
-              borderRadius: theme.spacing.base,
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              top: `${menuPosition.top}px`,
+              left: `${menuPosition.left}px`,
             }}
-            className="p-2 w-64"
+            className="bg-white rounded-lg shadow-xl p-2 w-64 z-50"
           >
             {items.map((item, index) => (
               <motion.div
                 key={index}
                 className="flex items-center py-2 px-4 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200"
-                onClick={() => {
-                  item.onClick();
-                  onClose();
-                }}
-                whileHover={{ backgroundColor: theme.colors.hover }}
+                onClick={() => item.onClick()}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {item.icon && (
-                  <item.icon
-                    size={20}
-                    className="mr-4"
-                    color={theme.colors.primary}
+                  <IconButton
+                    icon={item.icon}
+                    className="mr-4 text-app-orange"
                   />
                 )}
-                <span className="text-black">{item.label}</span>
+                <span className="text-gray-800">{item.label}</span>
+                {item.options && (
+                  <select className="ml-auto bg-transparent border-none">
+                    {item.options.map((option, i) => (
+                      <option key={i} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                )}
               </motion.div>
             ))}
           </motion.div>

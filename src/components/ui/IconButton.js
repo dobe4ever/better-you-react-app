@@ -1,23 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import theme from '../../styles/theme';
 
-const IconButton = ({ icon: Icon, onClick, className, color = 'orange', label }) => {
-  const iconColor = color === 'orange' ? theme.colors.primary : theme.colors.white;
-
+const IconButton = ({ icon: Icon, onClick, className, isActive }) => {
   return (
     <motion.button
-      className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors duration-200 ${className}`}
+      className={`p-2 rounded-full hover:bg-gray-200 transition-colors duration-200 ${
+        isActive ? 'text-app-orange' : 'text-gray-600'
+      } ${className}`}
       onClick={onClick}
-      whileHover={{ scale: 1.1, backgroundColor: theme.colors.hover }}
+      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      <Icon size={24} color={iconColor} />
-      {label && (
-        <span className={`mt-1 text-xs`} style={{ color: iconColor }}>
-          {label}
-        </span>
-      )}
+      <Icon size={24} />
     </motion.button>
   );
 };

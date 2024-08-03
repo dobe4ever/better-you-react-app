@@ -1,7 +1,5 @@
-import React, { useState, useCallback } from 'react';
 import List from '../ui/List';
 import TodoCard from './TodoCard';
-import ContextualMenu from '../ui/ContextualMenu';
 
 const TodosList = ({ todos, onToggle, onOpenMenu }) => {
   return (

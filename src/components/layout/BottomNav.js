@@ -1,3 +1,5 @@
+// src/components/layout/BottomNav.js
+
 import React, { useState } from 'react';
 import { RiHome5Line, RiNewspaperLine, RiRobotLine, RiAddLine, RiApps2Line, RiCalendarLine, RiBarChartBoxLine, RiTeamLine, RiGroupLine, RiBookOpenLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +13,7 @@ const BottomNav = () => {
   const navItems = [
     { icon: RiHome5Line, label: 'Home', path: '/' },
     { icon: RiNewspaperLine, label: 'News', path: '/news' },
-    { icon: RiAddLine, label: 'Add', path: '/add', isSpecial: true },
+    { icon: RiAddLine, label: '', path: '/add', isSpecial: true },
     { icon: RiRobotLine, label: 'AI Coach', path: '/coach' },
     { icon: RiApps2Line, label: 'More', action: () => setShowMenu(true) },
   ];
@@ -35,10 +37,13 @@ const BottomNav = () => {
           >
             {item.isSpecial ? (
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
-                <IconButton icon={item.icon} color="orange" />
+                <IconButton icon={item.icon} className="text-app-orange" />
               </div>
             ) : (
-              <IconButton icon={item.icon} color="white" label={item.label} />
+              <>
+                <IconButton icon={item.icon} className="text-white" />
+                <span className="text-xs text-white mt-1">{item.label}</span>
+              </>
             )}
           </div>
         ))}
