@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/dobe4ever/Goldcoin-series-webpage",  
+  "homepage": "https://github.com/dobe4ever/https://github.com/dobe4ever/better-you-react-app",  
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",  
