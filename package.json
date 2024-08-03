@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/dobe4ever/https://github.com/dobe4ever/better-you-react-app",  
+  "homepage": "https://github.com/dobe4ever/better-you-react-app",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",  
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,7 +30,8 @@
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^1.13.2",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwindcss-animate": "^1.0.6",
+    "webpack": "^5.93.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
