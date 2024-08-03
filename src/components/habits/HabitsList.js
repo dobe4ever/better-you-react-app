@@ -1,6 +1,9 @@
+// src/components/habits/HabitsList.js
+
 import React, { useState, useCallback } from 'react';
-import HabitCard from './HabitCard';
 import List from '../ui/List';
+import HabitCard from './HabitCard';
+import HabitCardBack from './HabitCardBack';
 import ContextualMenu from '../ui/ContextualMenu';
 import { RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiEditLine, RiLockLine, RiPaletteLine, RiAlarmLine, RiDeleteBinLine } from 'react-icons/ri';
 
@@ -16,8 +19,10 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
   }, [habits]);
 
   const handleOpenMenu = useCallback((event, habitId) => {
-    event.preventDefault();
     event.stopPropagation();
+    const habit = habits.find(h => h.id === habitId);
+    if (!habit) return;
+
     const rect = event.currentTarget.getBoundingClientRect();
     setMenuPosition({
       x: rect.right,
@@ -26,7 +31,7 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
 
     setSelectedHabitId(habitId);
     setMenuOpen(true);
-  }, []);
+  }, [habits]);
 
   const handleCloseMenu = useCallback(() => {
     setMenuOpen(false);
@@ -49,14 +54,17 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
         updatedHabit = { ...habit, priority: !habit.priority };
         break;
       case 'Set Deadline':
+        // You might want to open a date picker here
         updatedHabit = { ...habit, deadline: new Date().toISOString() };
         break;
       case 'Set Reminder':
+        // You might want to open a time picker here
         updatedHabit = { ...habit, reminder: new Date().toISOString() };
         break;
       case 'Delete':
         onDelete(selectedHabitId);
         break;
+      // Add more cases for other actions
       default:
         console.log(`Action ${action} not implemented`);
         return;
@@ -87,15 +95,22 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
         title="Habits"
         items={habits}
         renderItem={(habit) => (
-          <HabitCard
-            key={habit.id}
-            habit={habit}
-            onToggle={onToggle}
-            onOpenMenu={handleOpenMenu}
-            onCardClick={handleCardClick}
-          />
+          <div id={`habit-${habit.id}`} key={habit.id}>
+            <HabitCard
+              habit={habit}
+              onToggle={onToggle}
+              onOpenMenu={(event) => handleOpenMenu(event, habit.id)}
+              onCardClick={handleCardClick}
+            />
+          </div>
         )}
       />
+      {selectedHabit && (
+        <HabitCardBack
+          habit={selectedHabit}
+          onClose={() => setSelectedHabit(null)}
+        />
+      )}
       <ContextualMenu
         isOpen={menuOpen}
         onClose={handleCloseMenu}
