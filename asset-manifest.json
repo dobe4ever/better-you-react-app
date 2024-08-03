@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/dobe4ever/better-you-react-app/static/css/main.fece8900.css",
-    "main.js": "/dobe4ever/better-you-react-app/static/js/main.5b3b21de.js",
-    "index.html": "/dobe4ever/better-you-react-app/index.html",
-    "main.fece8900.css.map": "/dobe4ever/better-you-react-app/static/css/main.fece8900.css.map",
-    "main.5b3b21de.js.map": "/dobe4ever/better-you-react-app/static/js/main.5b3b21de.js.map"
+    "main.css": "/better-you-react-app/static/css/main.a4c0a087.css",
+    "main.js": "/better-you-react-app/static/js/main.fc360c4d.js",
+    "index.html": "/better-you-react-app/index.html",
+    "main.a4c0a087.css.map": "/better-you-react-app/static/css/main.a4c0a087.css.map",
+    "main.fc360c4d.js.map": "/better-you-react-app/static/js/main.fc360c4d.js.map"
   },
   "entrypoints": [
-    "static/css/main.fece8900.css",
-    "static/js/main.5b3b21de.js"
+    "static/css/main.a4c0a087.css",
+    "static/js/main.fc360c4d.js"
   ]
 }
