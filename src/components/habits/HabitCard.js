@@ -1,15 +1,17 @@
 // src/components/habits/HabitCard.js
 
 import React from 'react';
-import { RiCheckLine, RiMoreLine, RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiAlarmLine } from 'react-icons/ri';
+import { RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiAlarmLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 import IconButton from '../ui/IconButton';
 
+import { Check, MoreVertical } from 'lucide-react';
+
 const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
   const categoryColors = {
-    personal: 'bg-blue-100 border-blue-300',
-    health: 'bg-green-100 border-green-300',
-    financial: 'bg-yellow-100 border-yellow-300',
+    personal: 'bg-white border-app-orange',
+    health: 'bg-white border-app-orange',
+    financial: 'bg-white border-app-orange',
   };
 
   const handleAction = (e, action) => {
@@ -28,10 +30,10 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
             <IconButton
-              icon={RiCheckLine}
+              icon={Check}
               onClick={(e) => handleAction(e, onToggle)}
               isActive={habit.isCompleted}
-              className={`mr-3 ${habit.isCompleted ? 'bg-green-500 text-white' : 'border-2 border-gray-300'}`}
+              className={`mr-3 ${habit.isCompleted ? 'bg-app-orange text-white' : 'border-2 border-app-orange'}`}
             />
             <div>
               <h3 className="font-semibold">{habit.name}</h3>
@@ -39,7 +41,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
             </div>
           </div>
           <IconButton 
-            icon={RiMoreLine}
+            icon={MoreVertical}
             onClick={(e) => onOpenMenu(e)}
           />
         </div>

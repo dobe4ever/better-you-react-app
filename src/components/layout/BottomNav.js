@@ -31,8 +31,8 @@ const BottomNav = () => {
           className="relative -top-7"
           onClick={() => navigate(item.path)}
         >
-          <div className="bg-gray-100 rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
-            <div className="text-orange-500">
+          <div className="bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
+            <div className="text-app-orange">
               <CirclePlus strokeWidth={1} className="w-16 h-16" />
             </div>
           </div>
@@ -54,7 +54,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-orange-500 shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map(renderNavItem)}
       </div>
       <ContextualMenu

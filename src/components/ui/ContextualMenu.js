@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import IconButton from './IconButton';
+import IconButtonWhite from './IconButtonWhite';
 
 const ContextualMenu = ({ isOpen, onClose, position, items }) => {
   const menuRef = useRef();
@@ -100,7 +100,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
               top: `${menuPosition.top}px`,
               left: `${menuPosition.left}px`,
             }}
-            className="bg-orange-500 rounded-lg shadow-xl p-2 w-64 z-50"
+            className="bg-app-orange rounded-lg shadow-xl p-2 w-64 z-50"
           >
             {items.map((item, index) => (
               <motion.div
@@ -111,7 +111,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
                 whileTap={{ scale: 0.95 }}
               >
                 {item.icon && (
-                  <IconButton
+                  <IconButtonWhite
                     icon={item.icon}
                     className="mr-4 text-app-orange"
                   />

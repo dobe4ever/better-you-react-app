@@ -14,7 +14,7 @@ const TodoCard = ({ todo, onToggle, onOpenMenu }) => {
         <div className="flex items-center">
           <div
             className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center cursor-pointer
-              ${todo.isCompleted ? 'bg-blue-500 border-blue-500' : 'border-gray-300'}`}
+              ${todo.isCompleted ? 'bg-app-orange border-app-orange' : 'border-gray-300'}`}
             onClick={(e) => {
               e.stopPropagation();
               onToggle(todo.id);
