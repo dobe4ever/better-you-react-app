@@ -5,7 +5,7 @@ const UserProfile = () => {
   const progress = (13 / 20) * 100;
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
+    <div className="w-full mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
       <div className="bg-app-orange text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
