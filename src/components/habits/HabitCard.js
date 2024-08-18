@@ -8,11 +8,6 @@ import IconButton from '../ui/IconButton';
 import { Check, MoreVertical } from 'lucide-react';
 
 const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
-  const categoryColors = {
-    personal: 'bg-white border-app-orange',
-    health: 'bg-white border-app-orange',
-    financial: 'bg-white border-app-orange',
-  };
 
   const handleAction = (e, action) => {
     e.stopPropagation();
@@ -21,13 +16,13 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
 
   return (
     <motion.div
-      className={`p-4 rounded-lg shadow-md mb-4 border-2 ${categoryColors[habit.category]} ${habit.color ? `border-l-4 border-l-${habit.color}-500` : ''}`}
+      className={"p-4 rounded-lg shadow-md mb-4 border-2 bg-white border-app-orange"}
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onCardClick(habit.id)}
     >
       <div className="flex flex-col h-full">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center my-2">
           <div className="flex items-center">
             <IconButton
               icon={Check}
@@ -37,20 +32,22 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
             />
             <div>
               <h3 className="font-semibold">{habit.name}</h3>
-              <p className="text-sm text-gray-500">{habit.category}</p>
+                
+              <hr className="my-4 border-app-orange" /> 
+                
+              <div className="flex justify-start items-center">
+                {habit.isHighlighted && <RiStarLine className="text-yellow-500 mr-2 h-6 w-6" />}
+                {habit.isRecurring && <RiRepeatLine className="text-blue-500 mr-2 h-6 w-6" />}
+                {habit.priority && <RiFlag2Line className="text-red-500 mr-2 h-6 w-6" />}
+                {habit.deadline && <RiCalendarLine className="text-purple-500 mr-2 h-6 w-6" />}
+                {habit.reminder && <RiAlarmLine className="text-green-500 mr-2 h-6 w-6" />}
+              </div>
             </div>
           </div>
           <IconButton 
             icon={MoreVertical}
             onClick={(e) => onOpenMenu(e)}
           />
-        </div>
-        <div className="flex justify-start items-center mt-auto">
-          {habit.isHighlighted && <RiStarLine className="text-yellow-500 mr-2" />}
-          {habit.isRecurring && <RiRepeatLine className="text-blue-500 mr-2" />}
-          {habit.priority && <RiFlag2Line className="text-red-500 mr-2" />}
-          {habit.deadline && <RiCalendarLine className="text-purple-500 mr-2" />}
-          {habit.reminder && <RiAlarmLine className="text-green-500 mr-2" />}
         </div>
       </div>
     </motion.div>
