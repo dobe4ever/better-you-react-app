@@ -46,7 +46,7 @@ const BottomNav = () => {
         className="flex flex-col items-center justify-center h-full py-1"
         onClick={item.action || (() => navigate(item.path))}
       >
-        <item.icon className="text-white w-8 h-8" />
+        <item.icon className="text-white w-7 h-7" />
         <span className="text-xs text-white">{item.label}</span>
       </div>
     );
