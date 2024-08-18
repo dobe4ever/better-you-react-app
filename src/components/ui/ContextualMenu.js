@@ -100,12 +100,12 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
               top: `${menuPosition.top}px`,
               left: `${menuPosition.left}px`,
             }}
-            className="bg-white rounded-lg shadow-xl p-2 w-64 z-50"
+            className="bg-orange-500 rounded-lg shadow-xl p-2 w-64 z-50"
           >
             {items.map((item, index) => (
               <motion.div
                 key={index}
-                className="flex items-center py-2 px-4 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200"
+                className="flex items-center py-2 px-4 hover:bg-orange-300 rounded-md cursor-pointer transition-colors duration-200"
                 onClick={() => item.onClick()}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -116,7 +116,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
                     className="mr-4 text-app-orange"
                   />
                 )}
-                <span className="text-gray-800">{item.label}</span>
+                <span className="text-white">{item.label}</span>
                 {item.options && (
                   <select className="ml-auto bg-transparent border-none">
                     {item.options.map((option, i) => (

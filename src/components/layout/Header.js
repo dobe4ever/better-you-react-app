@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
+      <header className="bg-orange-500 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <IconButton icon={RiMenu2Line} onClick={() => setIsMenuOpen(true)} className="mr-3" />
           <h1 className="text-xl font-bold">BetterYou</h1>

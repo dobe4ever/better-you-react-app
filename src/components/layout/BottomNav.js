@@ -46,7 +46,7 @@ const BottomNav = () => {
         className="flex flex-col items-center justify-center h-full py-1"
         onClick={item.action || (() => navigate(item.path))}
       >
-        <item.icon className="text-white w-6 h-6" />
+        <item.icon className="text-white w-8 h-8" />
         <span className="text-xs text-white">{item.label}</span>
       </div>
     );
@@ -54,7 +54,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-500 shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map(renderNavItem)}
       </div>
       <ContextualMenu
