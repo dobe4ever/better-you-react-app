@@ -40,7 +40,14 @@ const Header = () => {
       <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <IconButtonWhite icon={RiMenu2Line} onClick={() => setIsMenuOpen(true)} className="mr-3" />
-          <h1 className="text-xl font-bold">BetterYou</h1>
+
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/symbol-and-text-horizontal-white.svg`}
+            alt="logo"
+            className="w-auto"
+            style={{ maxWidth: '100px' }}  
+          />
+            
         </div>
         <div className="flex items-center">
           <div className="relative mr-4">
