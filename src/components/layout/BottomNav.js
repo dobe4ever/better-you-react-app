@@ -31,7 +31,7 @@ const BottomNav = () => {
           className="relative -top-7"
           onClick={() => navigate(item.path)}
         >
-          <div className="bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
+          <div className="bg-gray-100 rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
             <div className="text-orange-500">
               <CirclePlus strokeWidth={1} className="w-16 h-16" />
             </div>
