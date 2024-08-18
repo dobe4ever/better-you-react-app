@@ -34,8 +34,9 @@ def process_file(file_path):
 
 if __name__ == "__main__":
     files_to_include = [
-        'src/**/*',  # This will include all files in src and its subdirectories
-        'public/index.html',
+        'src/**/*',
+        # 'build/**/*',
+        # 'public/index.html',
         'postcss.config.js',
         'tailwind.config.js',
         'package.json',

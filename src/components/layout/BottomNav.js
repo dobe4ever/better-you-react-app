@@ -1,52 +1,61 @@
-// src/components/layout/BottomNav.js
-
 import React, { useState } from 'react';
-import { RiHome5Line, RiNewspaperLine, RiRobotLine, RiAddLine, RiApps2Line, RiCalendarLine, RiBarChartBoxLine, RiTeamLine, RiGroupLine, RiBookOpenLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import ContextualMenu from '../ui/ContextualMenu';
-import IconButton from '../ui/IconButton';
+import { LayoutGrid, Home, Newspaper, CirclePlus, Bot, Calendar, BarChart2, Users, Briefcase, GraduationCap } from 'lucide-react';
 
 const BottomNav = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
   const navItems = [
-    { icon: RiHome5Line, label: 'Home', path: '/' },
-    { icon: RiNewspaperLine, label: 'News', path: '/news' },
-    { icon: RiAddLine, label: '', path: '/add', isSpecial: true },
-    { icon: RiRobotLine, label: 'AI Coach', path: '/coach' },
-    { icon: RiApps2Line, label: 'More', action: () => setShowMenu(true) },
+    { icon: Home, label: 'Home', path: '/' },
+    { icon: Newspaper, label: 'News', path: '/news' },
+    { icon: CirclePlus, label: '', path: '/add', isSpecial: true },
+    { icon: Bot, label: 'AI Coach', path: '/coach' },
+    { icon: LayoutGrid, label: 'More', action: () => setShowMenu(true) },
   ];
 
   const moreMenuItems = [
-    { icon: RiCalendarLine, label: 'Calendar', onClick: () => console.log('Calendar clicked') },
-    { icon: RiBarChartBoxLine, label: 'Stats', onClick: () => console.log('Stats clicked') },
-    { icon: RiTeamLine, label: 'Community', onClick: () => console.log('Community clicked') },
-    { icon: RiGroupLine, label: 'Collaboration', onClick: () => console.log('Collaboration clicked') },
-    { icon: RiBookOpenLine, label: 'Courses', onClick: () => console.log('Courses clicked') },
+    { icon: Calendar, label: 'Calendar', onClick: () => console.log('Calendar clicked') },
+    { icon: BarChart2, label: 'Stats', onClick: () => console.log('Stats clicked') },
+    { icon: Users, label: 'Community', onClick: () => console.log('Community clicked') },
+    { icon: Briefcase, label: 'Collaboration', onClick: () => console.log('Collaboration clicked') },
+    { icon: GraduationCap, label: 'Courses', onClick: () => console.log('Courses clicked') },
   ];
+
+  const renderNavItem = (item, index) => {
+    if (item.isSpecial) {
+      return (
+        <div
+          key={index}
+          className="relative -top-7"
+          onClick={() => navigate(item.path)}
+        >
+          <div className="bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
+            <div className="text-orange-500">
+              <CirclePlus strokeWidth={1} className="w-16 h-16" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        key={index}
+        className="flex flex-col items-center justify-center h-full py-1"
+        onClick={item.action || (() => navigate(item.path))}
+      >
+        <item.icon className="text-white w-6 h-6" />
+        <span className="text-xs text-white">{item.label}</span>
+      </div>
+    );
+  };
 
   return (
     <>
       <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
-        {navItems.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center justify-center h-full py-1"
-            onClick={item.action || (() => navigate(item.path))}
-          >
-            {item.isSpecial ? (
-              <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
-                <IconButton icon={item.icon} className="text-app-orange" />
-              </div>
-            ) : (
-              <>
-                <IconButton icon={item.icon} className="text-white" />
-                <span className="text-xs text-white mt-1">{item.label}</span>
-              </>
-            )}
-          </div>
-        ))}
+        {navItems.map(renderNavItem)}
       </div>
       <ContextualMenu
         isOpen={showMenu}
