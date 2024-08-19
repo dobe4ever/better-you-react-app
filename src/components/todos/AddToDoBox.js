@@ -39,7 +39,7 @@ const AddToDoBox = ({ onAdd }) => {
         <div className="relative flex items-center rounded-full shadow-md">
             <Input
                 type="text"
-                placeholder="Add Custom To-Do"
+                placeholder="Add New To-Do"
                 required
                 className="pr-12"
                 value={inputValue}

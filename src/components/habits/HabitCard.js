@@ -29,7 +29,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
               className={`mr-4 ml-3 ${habit.isCompleted ? 'bg-orange-main text-white' : 'bg-white text-orange-200 border-2 border-orange-100'}`}
             />
             <div>
-              <h3 className="text-style-subheading">{habit.name}</h3>
+              <h3 className="text-style-bastText">{habit.name}</h3>
                 
               <hr className="mb-2 border-1 border-orange-main" /> 
                 

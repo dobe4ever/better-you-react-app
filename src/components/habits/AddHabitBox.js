@@ -39,7 +39,7 @@ const AddHabitBox = ({ onAdd }) => {
         <div className="relative flex items-center mb-4 rounded-full shadow-md">
             <Input
                 type="text"
-                placeholder="Search Habits..."
+                placeholder="Add New Habit"
                 required
                 className="pr-12"
                 value={inputValue}

@@ -26,11 +26,11 @@ const TodoCard = ({ todo, onToggle, onEdit, onDelete }) => {
 
   return (
     <motion.div
-      className="bg-white rounded-full shadow-md mb-4 border-2 border-orange-light"
+      className="bg-white rounded-full shadow-md mb-4 border-2 border-gray-200"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="flex justify-between items-center p-2">
+      <div className="flex justify-between items-center p-1 pl-4 pr-2">
         <div className="flex items-center">
           <div
             className={`w-8 rounded-full mr-3 flex items-center justify-center cursor-pointer z-10
@@ -55,29 +55,29 @@ const TodoCard = ({ todo, onToggle, onEdit, onDelete }) => {
                 }
               }}
               autoFocus
-              className="font-semibold border-b-2 border-gray-300 outline-none"
+              className="font-semibold border-b-2 border-gray-400 outline-none"
             />
           ) : (
-            <h3 className="text-style-subheading">{todo.title}</h3>
+            <h3 className="text-style-baseText">{todo.title}</h3>
           )}
         </div>
         <div className="flex items-center p-2">
           <Repeat
-            className={`cursor-pointer mr-3 w-5 ${isRepeat ? 'text-orange-main' : 'text-orange-400'}`}
+            className={`cursor-pointer mr-3 w-5 ${isRepeat ? 'text-orange-main' : 'text-gray-400'}`}
             onClick={(e) => {
               e.stopPropagation();
               handleRepeatClick();
             }}
           />
           <Edit
-            className="text-orange-400 cursor-pointer mr-3 w-5"
+            className="text-gray-400 cursor-pointer mr-3 w-5"
             onClick={(e) => {
               e.stopPropagation();
               handleEditClick();
             }}
           />
           <Trash
-            className="text-orange-400 cursor-pointer w-5"
+            className="text-gray-400 cursor-pointer w-5"
             onClick={(e) => {
               e.stopPropagation();
               handleDeleteClick();
