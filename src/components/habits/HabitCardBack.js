@@ -65,6 +65,7 @@ const HabitCardBack = ({ habit, onClose }) => {
             <h3 className="text-xl font-semibold mb-2">{habit.videoContent.title}</h3>
             <div className="aspect-w-16 aspect-h-9">
               <iframe
+                title="Video"
                 src={habit.videoContent.embedUrl}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

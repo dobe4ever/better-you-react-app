@@ -31,30 +31,30 @@ const BottomNav = () => {
           className="relative -top-7"
           onClick={() => navigate(item.path)}
         >
-          <div className="bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center w-16 h-16">
-            <div className="text-app-orange">
+          <div className="bg-white rounded-full p-3 shadow-lg cursor-pointer flex items-center justify-center w-16 h-16">
+            <div className="text-orange-main">
               <CirclePlus strokeWidth={1} className="w-16 h-16" />
             </div>
           </div>
         </div>
       );
     }
-
+      
     return (
       <div
         key={index}
-        className="flex flex-col items-center justify-center h-full py-1"
+        className="flex flex-col items-center justify-center h-full"
         onClick={item.action || (() => navigate(item.path))}
       >
-        <item.icon className="text-white w-7 h-7" />
-        <span className="text-xs text-white">{item.label}</span>
+        <item.icon className="text-white" />
+        <span className="text-white text-sm">{item.label}</span>
       </div>
     );
   };
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-16 px-2 fixed z-10">
         {navItems.map(renderNavItem)}
       </div>
       <ContextualMenu

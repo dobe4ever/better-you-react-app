@@ -40,7 +40,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>

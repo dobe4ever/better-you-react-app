@@ -1,50 +1,87 @@
-// src/components/TodoCard.js
-import React from 'react';
-import { RiCheckLine, RiMoreLine, RiEditLine, RiDeleteBinLine } from 'react-icons/ri';
+import React, { useState } from 'react';
+import { Check, Edit, Repeat, Trash } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const TodoCard = ({ todo, onToggle, onOpenMenu }) => {
+const TodoCard = ({ todo, onToggle, onEdit, onDelete }) => {
+  const [isRepeat, setIsRepeat] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState(todo.title);
+
+  const handleRepeatClick = () => {
+    setIsRepeat(!isRepeat);
+  };
+
+  const handleEditClick = () => {
+    if (isEditing) {
+      onEdit(todo.id, editValue);
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    onDelete(todo.id);
+  };
+
   return (
     <motion.div
-      className="bg-white p-4 rounded-lg shadow-md mb-4 border-2 border-gray-200"
+      className="bg-white rounded-full shadow-md mb-4 border-2 border-orange-light"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center p-2">
         <div className="flex items-center">
           <div
-            className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center cursor-pointer
-              ${todo.isCompleted ? 'bg-app-orange border-app-orange' : 'border-gray-300'}`}
+            className={`w-8 rounded-full mr-3 flex items-center justify-center cursor-pointer z-10
+              ${todo.isCompleted ? 'bg-orange-main' : 'bg-orange-100'}`}
             onClick={(e) => {
               e.stopPropagation();
               onToggle(todo.id);
             }}
           >
-            {todo.isCompleted && <RiCheckLine className="text-white" />}
+            <Check className="text-white" />
           </div>
-          <h3 className="font-semibold">{todo.title}</h3>
+          {isEditing ? (
+            <input
+              type="text"
+              value={editValue}
+              onChange={(e) => setEditValue(e.target.value)}
+              onBlur={() => setIsEditing(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  onEdit(todo.id, editValue);
+                  setIsEditing(false);
+                }
+              }}
+              autoFocus
+              className="font-semibold border-b-2 border-gray-300 outline-none"
+            />
+          ) : (
+            <h3 className="text-style-subheading">{todo.title}</h3>
+          )}
         </div>
-        <div className="flex items-center">
-          <RiEditLine 
-            className="text-gray-400 cursor-pointer mr-2" 
+        <div className="flex items-center p-2">
+          <Repeat
+            className={`cursor-pointer mr-3 w-5 ${isRepeat ? 'text-orange-main' : 'text-orange-400'}`}
             onClick={(e) => {
               e.stopPropagation();
-              console.log('Edit todo');
-            }} 
+              handleRepeatClick();
+            }}
           />
-          <RiDeleteBinLine 
-            className="text-gray-400 cursor-pointer mr-2" 
+          <Edit
+            className="text-orange-400 cursor-pointer mr-3 w-5"
             onClick={(e) => {
               e.stopPropagation();
-              console.log('Delete todo');
-            }} 
+              handleEditClick();
+            }}
           />
-          <RiMoreLine 
-            className="text-gray-400 cursor-pointer" 
+          <Trash
+            className="text-orange-400 cursor-pointer w-5"
             onClick={(e) => {
               e.stopPropagation();
-              onOpenMenu(todo.id);
-            }} 
+              handleDeleteClick();
+            }}
           />
         </div>
       </div>

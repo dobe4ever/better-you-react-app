@@ -98,7 +98,7 @@ Implemented dummy notifications system
 </development_history>
 
 <important_notes>
-The app uses a custom orange color defined in tailwind.config.js as 'app-orange'
+The app uses a custom orange color defined in tailwind.config.js as 'orange-main'
 The ContextualMenu component is reusable across different parts of the app
 Drag and Drop Functionality:
 
@@ -108,7 +108,7 @@ a) Explore alternative libraries or custom implementation
 b) Focus on vertical-only drag and drop within each list
 c) Ensure smooth performance across all devices
 
-Color Scheme: Custom orange color defined in tailwind.config.js as 'app-orange'
+Color Scheme: Custom orange color defined in tailwind.config.js as 'orange-main'
 There are multiple contextual menus: hamburger menu, user profile menu, notifications menu, and habit options menu, that need to keep consistent style and the same for any future contextual menus.
 Notifications System: Currently using dummy data and a static count, prepared for future backend integration
 Development Environment: Replit. Potential limitations and incompatibilities
@@ -301,7 +301,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>
@@ -349,7 +349,7 @@ const UserProfile = () => {
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
-      <div className="bg-app-orange text-white p-4 flex flex-col items-center">
+      <div className="bg-orange-main text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
@@ -364,7 +364,7 @@ const UserProfile = () => {
         <div className="mb-2 text-center text-gray-600">13 out of 20 Today</div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
-            className="bg-app-orange h-2.5 rounded-full transition-all duration-500 ease-out"
+            className="bg-orange-main h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -449,7 +449,7 @@ const IconButton = ({ icon: Icon, onClick, className, isActive }) => {
   return (
     <motion.button
       className={`p-2 rounded-full hover:bg-gray-200 transition-colors duration-200 ${
-        isActive ? 'text-app-orange' : 'text-gray-600'
+        isActive ? 'text-orange-main' : 'text-gray-600'
       } ${className}`}
       onClick={onClick}
       whileHover={{ scale: 1.1 }}
@@ -614,7 +614,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
                 {item.icon && (
                   <IconButton
                     icon={item.icon}
-                    className="mr-4 text-app-orange"
+                    className="mr-4 text-orange-main"
                   />
                 )}
                 <span className="text-gray-800">{item.label}</span>
@@ -680,7 +680,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
+      <header className="bg-orange-main text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <IconButton icon={RiMenu2Line} onClick={() => setIsMenuOpen(true)} className="mr-3" />
           <h1 className="text-xl font-bold">BetterYou</h1>
@@ -754,7 +754,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map((item, index) => (
           <div
             key={index}
@@ -763,7 +763,7 @@ const BottomNav = () => {
           >
             {item.isSpecial ? (
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
-                <IconButton icon={item.icon} className="text-app-orange" />
+                <IconButton icon={item.icon} className="text-orange-main" />
               </div>
             ) : (
               <>
@@ -1441,7 +1441,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-orange': '#FF5722',
+        'orange-main': '#FF5722',
       },
     },
   },
@@ -1604,7 +1604,7 @@ Changelog 7/28/2024:
 </development_history>
 
 <important_notes>
-1. The app uses a custom orange color defined in tailwind.config.js as 'app-orange'
+1. The app uses a custom orange color defined in tailwind.config.js as 'orange-main'
 2. The ContextualMenu component is reusable across different parts of the app
 3. Drag and Drop Functionality:
    - Attempted to implement drag and drop for list items using react-beautiful-dnd
@@ -1617,7 +1617,7 @@ Changelog 7/28/2024:
      a) Explore alternative libraries or custom implementation
      b) Focus on vertical-only drag and drop within each list
      c) Ensure smooth performance across all devices
-4. Color Scheme: ustom orange color defined in tailwind.config.js as 'app-orange'
+4. Color Scheme: ustom orange color defined in tailwind.config.js as 'orange-main'
 5. ContextualMenu component uses Framer Motion for animations
 6. There are three different contextual menus: hamburger menu, user profile menu, and notifications menu. The positioning of contextual menus has been adjusted to work well with the app's layout
 7. Notifications System: Currently using dummy data and a static count, prepared for future backend integration
@@ -1680,7 +1680,7 @@ Changelog 7/28/2024:
 4. Implemented dummy notifications system with a count indicator and a list of notifications in a contextual menu.
 
 Important Notes:
-1. The app uses a custom orange color defined in tailwind.config.js as 'app-orange'
+1. The app uses a custom orange color defined in tailwind.config.js as 'orange-main'
 2. The ContextualMenu component uses Framer Motion for animations
 3. The "More" option in the bottom nav opens a contextual menu
 6. The app structure allows for easy addition of new 'sections/pages'
@@ -1897,7 +1897,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>
@@ -1963,7 +1963,7 @@ const ContextualMenu = ({ isOpen, onClose, menuItems, position = 'bottom-right' 
                   onClose();
                 }}
               >
-                {item.icon && <item.icon className="text-app-orange mr-4" size={24} />}
+                {item.icon && <item.icon className="text-orange-main mr-4" size={24} />}
                 <span className="text-gray-800">{item.label}</span>
               </div>
             ))}
@@ -2193,7 +2193,7 @@ const UserProfile = () => {
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
-      <div className="bg-app-orange text-white p-4 flex flex-col items-center">
+      <div className="bg-orange-main text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
@@ -2208,7 +2208,7 @@ const UserProfile = () => {
         <div className="mb-2 text-center text-gray-600">13 out of 20 Today</div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
-            className="bg-app-orange h-2.5 rounded-full transition-all duration-500 ease-out"
+            className="bg-orange-main h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -2258,7 +2258,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
+      <header className="bg-orange-main text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <RiMenu2Line size={24} className="mr-3 cursor-pointer" onClick={() => setIsMenuOpen(true)} />
           <h1 className="text-xl font-bold">BetterYou</h1>
@@ -2337,7 +2337,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map((item, index) => (
           <div
             key={index}
@@ -2348,7 +2348,7 @@ const BottomNav = () => {
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
                 <item.icon
                   size={24}
-                  className="text-app-orange"
+                  className="text-orange-main"
                 />
               </div>
             ) : (
@@ -2590,7 +2590,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-orange': '#FF5722',
+        'orange-main': '#FF5722',
       },
     },
   },
@@ -2684,7 +2684,7 @@ Changelog 7/28/2024:
 4. Implemented dummy notifications system with a count indicator and a list of notifications in a contextual menu.
 
 Important Notes:
-1. The app uses a custom orange color defined in tailwind.config.js as 'app-orange'
+1. The app uses a custom orange color defined in tailwind.config.js as 'orange-main'
 2. The ContextualMenu component uses Framer Motion for animations
 3. The "More" option in the bottom nav opens a contextual menu
 6. The app structure allows for easy addition of new 'sections/pages'
@@ -2901,7 +2901,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>
@@ -2967,7 +2967,7 @@ const ContextualMenu = ({ isOpen, onClose, menuItems, position = 'bottom-right' 
                   onClose();
                 }}
               >
-                {item.icon && <item.icon className="text-app-orange mr-4" size={24} />}
+                {item.icon && <item.icon className="text-orange-main mr-4" size={24} />}
                 <span className="text-gray-800">{item.label}</span>
               </div>
             ))}
@@ -3197,7 +3197,7 @@ const UserProfile = () => {
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
-      <div className="bg-app-orange text-white p-4 flex flex-col items-center">
+      <div className="bg-orange-main text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
@@ -3212,7 +3212,7 @@ const UserProfile = () => {
         <div className="mb-2 text-center text-gray-600">13 out of 20 Today</div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
-            className="bg-app-orange h-2.5 rounded-full transition-all duration-500 ease-out"
+            className="bg-orange-main h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -3262,7 +3262,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
+      <header className="bg-orange-main text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <RiMenu2Line size={24} className="mr-3 cursor-pointer" onClick={() => setIsMenuOpen(true)} />
           <h1 className="text-xl font-bold">BetterYou</h1>
@@ -3341,7 +3341,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map((item, index) => (
           <div
             key={index}
@@ -3352,7 +3352,7 @@ const BottomNav = () => {
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
                 <item.icon
                   size={24}
-                  className="text-app-orange"
+                  className="text-orange-main"
                 />
               </div>
             ) : (
@@ -3594,7 +3594,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-orange': '#FF5722',
+        'orange-main': '#FF5722',
       },
     },
   },
@@ -3689,7 +3689,7 @@ Changelog 7/28/2024:
 4. Implemented dummy notifications system with a count indicator and a list of notifications in a contextual menu.
 
 Important Notes:
-1. The app uses a custom orange color defined in tailwind.config.js as 'app-orange'
+1. The app uses a custom orange color defined in tailwind.config.js as 'orange-main'
 2. The ContextualMenu component uses Framer Motion for animations
 3. The "More" option in the bottom nav opens a contextual menu
 6. The app structure allows for easy addition of new 'sections/pages'
@@ -3858,7 +3858,7 @@ const UserProfile = () => {
 
   return (
     <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden mb-4">
-      <div className="bg-app-orange text-white p-4 flex flex-col items-center">
+      <div className="bg-orange-main text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
@@ -3873,7 +3873,7 @@ const UserProfile = () => {
         <div className="mb-2 text-center text-gray-600">13 out of 20 Today</div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
-            className="bg-app-orange h-2.5 rounded-full transition-all duration-500 ease-out"
+            className="bg-orange-main h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -3929,7 +3929,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>
@@ -3969,7 +3969,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-20 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-20 px-2">
         {navItems.map((item, index) => (
           <div
             key={index}
@@ -3982,7 +3982,7 @@ const BottomNav = () => {
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
                 <item.icon
                   size={24}
-                  className="text-app-orange"
+                  className="text-orange-main"
                 />
               </div>
             ) : (
@@ -4065,7 +4065,7 @@ const ContextualMenu = ({ isOpen, onClose, menuItems, position = 'bottom-right' 
                   onClose();
                 }}
               >
-                {item.icon && <item.icon className="text-app-orange mr-4" size={24} />}
+                {item.icon && <item.icon className="text-orange-main mr-4" size={24} />}
                 <span className="text-gray-800">{item.label}</span>
               </div>
             ))}
@@ -4117,7 +4117,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center">
+      <header className="bg-orange-main text-white p-4 flex justify-between items-center">
         <div className="flex items-center">
           <RiMenu2Line size={24} className="mr-3 cursor-pointer" onClick={() => setIsMenuOpen(true)} />
           <h1 className="text-xl font-bold">BetterYou</h1>
@@ -4585,7 +4585,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-orange': '#FF5722',
+        'orange-main': '#FF5722',
       },
     },
   },

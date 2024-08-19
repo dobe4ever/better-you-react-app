@@ -279,7 +279,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 className="w-full"
               />
             </div>
-            <Button type="submit" className="w-full bg-app-orange hover:bg-orange-700 text-white">Submit</Button>
+            <Button type="submit" className="w-full bg-orange-main hover:bg-orange-700 text-white">Submit</Button>
           </form>
         </CardContent>
       </Card>
@@ -300,7 +300,7 @@ const UserProfile = () => {
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
-      <div className="bg-app-orange text-white p-4 flex flex-col items-center">
+      <div className="bg-orange-main text-white p-4 flex flex-col items-center">
         <div className="w-24 h-24 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
@@ -315,7 +315,7 @@ const UserProfile = () => {
         <div className="mb-2 text-center text-gray-600">13 out of 20 Today</div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
-            className="bg-app-orange h-2.5 rounded-full transition-all duration-500 ease-out"
+            className="bg-orange-main h-2.5 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -643,7 +643,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-app-orange text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
+      <header className="bg-orange-main text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <IconButton icon={RiMenu2Line} onClick={() => setIsMenuOpen(true)} className="mr-3" />
           <h1 className="text-xl font-bold">BetterYou</h1>
@@ -718,7 +718,7 @@ const BottomNav = () => {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-app-orange shadow-lg flex justify-around items-center h-16 px-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-main shadow-lg flex justify-around items-center h-16 px-2">
         {navItems.map((item, index) => (
           <div
             key={index}
@@ -727,7 +727,7 @@ const BottomNav = () => {
           >
             {item.isSpecial ? (
               <div className="bg-white rounded-full p-3 hover:bg-gray-100 transition-colors duration-200">
-                <IconButton icon={item.icon} className="text-app-orange" />
+                <IconButton icon={item.icon} className="text-orange-main" />
               </div>
             ) : (
               <>
@@ -952,7 +952,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
                 {item.icon && (
                   <IconButton
                     icon={item.icon}
-                    className="mr-4 text-app-orange"
+                    className="mr-4 text-orange-main"
                   />
                 )}
                 <span className="text-gray-800">{item.label}</span>
@@ -986,7 +986,7 @@ const IconButton = ({ icon: Icon, onClick, className, isActive }) => {
   return (
     <motion.button
       className={`p-2 rounded-full hover:bg-gray-200 transition-colors duration-200 ${
-        isActive ? 'text-app-orange' : 'text-gray-600'
+        isActive ? 'text-orange-main' : 'text-gray-600'
       } ${className}`}
       onClick={onClick}
       whileHover={{ scale: 1.1 }}
@@ -1402,7 +1402,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-orange': '#FF5722',
+        'orange-main': '#FF5722',
       },
     },
   },

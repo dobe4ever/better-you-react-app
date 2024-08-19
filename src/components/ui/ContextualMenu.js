@@ -100,7 +100,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
               top: `${menuPosition.top}px`,
               left: `${menuPosition.left}px`,
             }}
-            className="bg-app-orange rounded-lg shadow-xl p-2 w-64 z-50"
+            className="bg-orange-main rounded-lg shadow-xl p-2 w-64 z-50"
           >
             {items.map((item, index) => (
               <motion.div
@@ -113,7 +113,7 @@ const ContextualMenu = ({ isOpen, onClose, position, items }) => {
                 {item.icon && (
                   <IconButtonWhite
                     icon={item.icon}
-                    className="mr-4 text-app-orange"
+                    className="mr-4 text-orange-main"
                   />
                 )}
                 <span className="text-white">{item.label}</span>

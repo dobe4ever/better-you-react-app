@@ -1,11 +1,9 @@
 // src/components/habits/HabitCard.js
 
 import React from 'react';
-import { RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiAlarmLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 import IconButton from '../ui/IconButton';
-
-import { Check, MoreVertical } from 'lucide-react';
+import { Check, MoreVertical, AlarmClock, Star, Repeat, Flag, Calendar } from 'lucide-react';
 
 const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
 
@@ -16,7 +14,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
 
   return (
     <motion.div
-      className={"p-2 rounded-lg shadow-md mb-4 border-2 bg-white border-app-orange"}
+      className={"p-2 rounded-full shadow-md mb-4 border-2 bg-white border-orange-main"}
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onCardClick(habit.id)}
@@ -28,19 +26,19 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
               icon={Check}
               onClick={(e) => handleAction(e, onToggle)}
               isActive={habit.isCompleted}
-              className={`mr-3 ${habit.isCompleted ? 'bg-app-orange text-white' : 'border-2 border-app-orange'}`}
+              className={`mr-4 ml-3 ${habit.isCompleted ? 'bg-orange-main text-white' : 'bg-white text-orange-200 border-2 border-orange-100'}`}
             />
             <div>
-              <h3 className="font-semibold">{habit.name}</h3>
+              <h3 className="text-style-subheading">{habit.name}</h3>
                 
-              <hr className="my-2 border-app-orange" /> 
+              <hr className="mb-2 border-1 border-orange-main" /> 
                 
               <div className="flex justify-start items-center">
-                {habit.isHighlighted && <RiStarLine className="text-yellow-500 mr-2 h-5 w-5" />}
-                {habit.isRecurring && <RiRepeatLine className="text-blue-500 mr-2 h-5 w-5" />}
-                {habit.priority && <RiFlag2Line className="text-red-500 mr-2 h-5 w-5" />}
-                {habit.deadline && <RiCalendarLine className="text-purple-500 mr-2 h-5 w-5" />}
-                {habit.reminder && <RiAlarmLine className="text-green-500 mr-2 h-5 w-5" />}
+                {habit.isHighlighted && <Star className="text-yellow-700 mr-2 h-5 w-5" />}
+                {habit.isRecurring && <Repeat className="text-blue-700 mr-2 h-5 w-5" />}
+                {habit.priority && <Flag className="text-red-700 mr-2 h-5 w-5" />}
+                {habit.deadline && <Calendar className="text-green-700 mr-2 h-5 w-5" />}
+                {habit.reminder && <AlarmClock className="text-orange-600 mr-2 h-5 w-5" />}
               </div>
             </div>
           </div>

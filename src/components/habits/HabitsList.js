@@ -5,6 +5,7 @@ import List from '../ui/List';
 import HabitCard from './HabitCard';
 import HabitCardBack from './HabitCardBack';
 import ContextualMenu from '../ui/ContextualMenu';
+import AddHabitBox from './AddHabitBox';
 import { RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiEditLine, RiLockLine, RiPaletteLine, RiAlarmLine, RiDeleteBinLine } from 'react-icons/ri';
 
 const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
@@ -99,6 +100,7 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
               onOpenMenu={(event) => handleOpenMenu(event, habit.id)}
               onCardClick={handleCardClick}
             />
+              
           </div>
         )}
       />
@@ -114,6 +116,13 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
         position={menuPosition}
         items={menuItems}
       />
+
+      <AddHabitBox
+        onToggle={onToggle}
+        onOpenMenu={(event) => handleOpenMenu(event)}
+        onCardClick={handleCardClick}
+      />
+        
     </>
   );
 };

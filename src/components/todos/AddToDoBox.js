@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { cn } from "../../lib/utils";
-import IconButton from '../ui/IconButton';
+import IconButtonWhite from '../ui/IconButtonWhite';
 
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
     return (
@@ -18,7 +18,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
 });
 Input.displayName = "Input";
 
-const AddHabitBox = ({ onAdd }) => {
+const AddToDoBox = ({ onAdd }) => {
     const [inputValue, setInputValue] = useState("");
 
     const handleAddClick = () => {
@@ -36,23 +36,23 @@ const AddHabitBox = ({ onAdd }) => {
     };
 
     return (
-        <div className="relative flex items-center mb-4 rounded-full shadow-md">
+        <div className="relative flex items-center rounded-full shadow-md">
             <Input
                 type="text"
-                placeholder="Search Habits..."
+                placeholder="Add Custom To-Do"
                 required
                 className="pr-12"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
-            <IconButton
-                className="rounded-full flex items-center justify-center cursor-pointer absolute right-3 bg-white"
-                icon={Search}
+            <IconButtonWhite
+                className="rounded-full flex items-center justify-center cursor-pointer absolute right-3 bg-orange-main"
+                icon={Plus}
                 onClick={handleAddClick}
             />
         </div>
     );
 };
 
-export default AddHabitBox;
+export default AddToDoBox;

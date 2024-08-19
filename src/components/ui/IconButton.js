@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const IconButton = ({ icon: Icon, onClick, className, isActive }) => {
   return (
     <motion.button
-      className={`p-2 rounded-full hover:bg-orange-300 transition-colors duration-200 ${
-        isActive ? 'text-app-orange' : 'text-app-orange'
+      className={`p-2 rounded-full ${
+        isActive ? 'text-orange-main' : 'text-orange-main'
       } ${className}`}
       onClick={onClick}
       whileHover={{ scale: 1.1 }}
