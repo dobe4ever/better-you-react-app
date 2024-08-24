@@ -43,7 +43,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
       <div className="flex items-center mb-2">
         <div className="flex-grow mr-4">
           {/* Progress line with progressively larger fire emoji milestones */}
-          <div className="relative w-full h-2 bg-gray-200 rounded-full">
+          <div className="relative w-full h-1 bg-gray-200 rounded-full">
             <div 
               className="absolute top-0 left-0 h-full bg-orange-main rounded-full"
               style={{ width: `${Math.min(consecutiveDays / 28, 1) * 100}%` }}
