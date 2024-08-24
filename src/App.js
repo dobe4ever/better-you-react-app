@@ -42,7 +42,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-100">
         <Header />
         <div className="pt-16 pb-20">
           <div className="container mx-auto px-4 py-8 max-w-4xl">

@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -23,8 +22,8 @@ module.exports = {
       },    
       fontFamily: {
         'nunito': ['Nunito', 'sans-serif'],
-        'sans': ['sans-serif', 'serif'],
-        'serif': ['serif', 'georgia'],
+        'sans': ['Inter', 'sans-serif'],
+        'heading': ['Poppins', 'sans-serif'],
       },
       fontSize: {
         'small': ['0.875rem', { lineHeight: '1.25rem' }],

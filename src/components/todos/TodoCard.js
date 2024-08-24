@@ -26,7 +26,7 @@ const TodoCard = ({ todo, onToggle, onEdit, onDelete }) => {
 
   return (
     <motion.div
-      className="bg-white rounded-full shadow-md mb-4 border-2 border-gray-200"
+      className="bg-white rounded-lg shadow-md mb-4 border-0 border-gray-200"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
     >
