@@ -89,7 +89,13 @@ module.exports = {
           fontWeight: '500',
           fontFamily: 'Nunito, sans-serif',
         },
-          
+          // Custom class for decor text style
+          '.text-style-decor': {
+            fontSize: '1rem',
+            lineHeight: '1.5rem',
+            fontWeight: '600',
+            fontFamily: 'Poppins, sans-serif',
+          },
       }
       // Add the new utility classes to Tailwind, making them responsive and hoverable
       addUtilities(newUtilities, ['responsive', 'hover'])

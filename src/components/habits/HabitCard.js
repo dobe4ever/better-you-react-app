@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import IconButton from '../ui/IconButton';
-import { Check, MoreVertical, AlarmClock, Star, Repeat, Flag, Calendar } from 'lucide-react';
+import { Check, MoreHorizontal, AlarmClock, Star, Repeat, Flag, Calendar } from 'lucide-react';
 
 const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
   // Dummy value for consecutive days (0-28+)
@@ -21,29 +21,29 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
 
   return (
     <motion.div
-      className="p-4 rounded-lg shadow-md mb-4 border-0 bg-white border-orange-main"
+      className="flex rounded-lg shadow-md mb-4 overflow-hidden" // Main container with flexbox
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onCardClick(habit.id)}
     >
-      <div className="flex items-center mb-3">
-        <IconButton
-          icon={Check}
-          onClick={(e) => handleAction(e, onToggle)}
-          isActive={habit.isCompleted}
-          className={`mr-4 ${habit.isCompleted ? 'bg-orange-main text-white' : 'bg-orange-100 text-white'}`}
-        />
-        <h3 className="text-style-bastText flex-grow">{habit.name}</h3>
-        <IconButton 
-          icon={MoreVertical}
-          onClick={(e) => onOpenMenu(e)}
-        />
-      </div>
+      {/* White section (left side) */}
+      <div className="flex-grow bg-white p-4 pr-8">
+        {/* Top row: Check button and Habit title */}
+        <div className="flex items-center mb-4">
+          <h3 className="text-style-bastText flex-grow text-center">{habit.name}</h3>
+        </div>
 
-      <div className="flex items-center mb-2">
-        <div className="flex-grow mr-4">
-          {/* Progress line with progressively larger fire emoji milestones */}
-          <div className="relative w-full h-1 bg-gray-200 rounded-full">
+        {/* Middle row: Progress bar */}
+        <div className="mb-3 flex justify-between items-center">
+
+          <IconButton
+            icon={Check}
+            onClick={(e) => handleAction(e, onToggle)}
+            isActive={habit.isCompleted}
+            className={`mr-4 ${habit.isCompleted ? 'bg-orange-main text-white' : 'bg-orange-100 text-white'}`}
+          />
+          
+          <div className="relative w-full h-0.5 bg-orange-100 rounded-full">
             <div 
               className="absolute top-0 left-0 h-full bg-orange-main rounded-full"
               style={{ width: `${Math.min(consecutiveDays / 28, 1) * 100}%` }}
@@ -64,21 +64,29 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
             ))}
           </div>
         </div>
-        {/* Refined streak counter */}
-        <div className="flex flex-col items-center justify-center ml-2 min-w-[60px]">
-          <span className="text-2xl font-bold text-orange-500">{consecutiveDays}</span>
-          <span className="text-xs font-medium text-gray-600">
-            {consecutiveDays === 1 ? 'day' : 'days'}
-          </span>
+
+        {/* Bottom row: Status icons and More button */}
+        <div className="flex justify-between items-center">
+          <div className="flex">
+            {habit.isHighlighted && <Star className="text-gray-200 mr-2 h-5 w-5" />}
+            {habit.isRecurring && <Repeat className="text-gray-200 mr-2 h-5 w-5" />}
+            {habit.priority && <Flag className="text-gray-200 mr-2 h-5 w-5" />}
+            {habit.deadline && <Calendar className="text-gray-200 mr-2 h-5 w-5" />}
+            {habit.reminder && <AlarmClock className="text-gray-200 mr-2 h-5 w-5" />}
+          </div>
+          <IconButton 
+            icon={MoreHorizontal}
+            onClick={(e) => onOpenMenu(e)}
+          />
         </div>
       </div>
 
-      <div className="flex mt-2 mr-4">
-        {habit.isHighlighted && <Star className="text-yellow-700 mr-2 h-5 w-5" />}
-        {habit.isRecurring && <Repeat className="text-blue-700 mr-2 h-5 w-5" />}
-        {habit.priority && <Flag className="text-red-700 mr-2 h-5 w-5" />}
-        {habit.deadline && <Calendar className="text-green-700 mr-2 h-5 w-5" />}
-        {habit.reminder && <AlarmClock className="text-orange-600 mr-2 h-5 w-5" />}
+      {/* Orange section (right side) */}
+      <div className="bg-orange-main w-20 flex flex-col items-center justify-center">
+        <span className="text-2xl font-bold text-white">{consecutiveDays}</span>
+        <span className="text-xs font-medium text-white">
+          {consecutiveDays === 1 ? 'day' : 'days'}
+        </span>
       </div>
     </motion.div>
   );

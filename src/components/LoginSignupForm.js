@@ -26,7 +26,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required
+                // required
                 className="w-full"
               />
             </div>
@@ -36,7 +36,7 @@ const LoginSignupForm = ({ onLogin }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                // required
                 className="w-full"
               />
             </div>

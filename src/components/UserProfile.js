@@ -7,7 +7,7 @@ const UserProfile = () => {
   return (
     <div className="w-full mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-4">
       <div className="bg-orange-main text-white p-4 flex flex-col items-center">
-        <div className="w-42 h-42 bg-white rounded-full mb-2 overflow-hidden">
+        <div className="w-34 h-34 bg-white rounded-full mb-2 overflow-hidden">
           {/* Replace with actual user avatar */}
           <img 
             src="https://randomuser.me/api/portraits/men/32.jpg" 

@@ -42,7 +42,7 @@ const AddHabitBox = ({ onAdd }) => {
       type="text"
       placeholder="Add New Habit"
       required
-      className="w-full pl-6 pr-12 py-2 rounded-full"
+      className="w-full pl-6 pr-12 py-2 rounded-lg"
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       onKeyDown={handleKeyDown}
