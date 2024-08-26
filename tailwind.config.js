@@ -77,10 +77,10 @@ module.exports = {
         },
         // Custom class for subheading style
         '.text-style-subheading': {
-          fontSize: '1.2rem',
+          fontSize: '1rem',
           lineHeight: '2rem',
-          fontWeight: '700',
-          fontFamily: 'Nunito, sans-serif',
+          fontWeight: '600',
+          fontFamily: 'Poppins',
         },
         // Custom class for base text style
         '.text-style-base': {

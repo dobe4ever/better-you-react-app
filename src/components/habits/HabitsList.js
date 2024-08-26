@@ -6,7 +6,7 @@ import HabitCard from './HabitCard';
 import HabitCardBack from './HabitCardBack';
 import ContextualMenu from '../ui/ContextualMenu';
 import AddHabitBox from './AddHabitBox';
-import { RiStarLine, RiRepeatLine, RiFlag2Line, RiCalendarLine, RiEditLine, RiLockLine, RiPaletteLine, RiAlarmLine, RiDeleteBinLine } from 'react-icons/ri';
+import { AlarmClock, Palette, Lock, Calendar, Repeat, Flag, Star, Trash } from 'lucide-react';
 
 const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
   const [selectedHabit, setSelectedHabit] = useState(null);
@@ -76,17 +76,16 @@ const HabitsList = ({ habits, onToggle, onUpdate, onDelete }) => {
   }, [selectedHabitId, habits, onUpdate, onDelete, handleCloseMenu]);
 
   const menuItems = [
-    { icon: RiStarLine, label: 'Highlight', onClick: () => handleMenuItemClick('Highlight') },
-    { icon: RiRepeatLine, label: 'Recurring', onClick: () => handleMenuItemClick('Recurring') },
-    { icon: RiFlag2Line, label: 'Priority', onClick: () => handleMenuItemClick('Priority') },
-    { icon: RiCalendarLine, label: 'Set Deadline', onClick: () => handleMenuItemClick('Set Deadline') },
-    { icon: RiEditLine, label: 'Edit', onClick: () => handleMenuItemClick('Edit') },
-    { icon: RiLockLine, label: 'Private/Public', onClick: () => handleMenuItemClick('Private/Public') },
-    { icon: RiPaletteLine, label: 'Color', onClick: () => handleMenuItemClick('Color') },
-    { icon: RiAlarmLine, label: 'Set Reminder', onClick: () => handleMenuItemClick('Set Reminder') },
-    { icon: RiDeleteBinLine, label: 'Delete', onClick: () => handleMenuItemClick('Delete') },
+    { icon: Star, label: 'Highlight', onClick: () => handleMenuItemClick('Highlight') },
+    { icon: Repeat, label: 'Recurring', onClick: () => handleMenuItemClick('Recurring') },
+    { icon: Flag, label: 'Priority', onClick: () => handleMenuItemClick('Priority') },
+    { icon: Calendar, label: 'Set Deadline', onClick: () => handleMenuItemClick('Set Deadline') },
+    { icon: Lock, label: 'Private/Public', onClick: () => handleMenuItemClick('Private/Public') },
+    { icon: Palette, label: 'Color', onClick: () => handleMenuItemClick('Color') },
+    { icon: AlarmClock, label: 'Set Reminder', onClick: () => handleMenuItemClick('Set Reminder') },
+    { icon: Trash, label: 'Delete', onClick: () => handleMenuItemClick('Delete') },
   ];
-
+  
   return (
     <>
       <List

@@ -8,7 +8,7 @@ const List = ({ title, items, renderItem }) => {
   return (
     <div className="mb-6">
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-style-basic">{title}</h2>
         <button 
           className="text-sm text-gray-600"
           onClick={() => setHideCompleted(!hideCompleted)}

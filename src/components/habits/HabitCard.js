@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import IconButton from '../ui/IconButton';
-import { Check, MoreHorizontal, AlarmClock, Star, Repeat, Flag, Calendar } from 'lucide-react';
+import { Trash, Palette, Lock, Check, MoreHorizontal, AlarmClock, Star, Repeat, Flag, Calendar } from 'lucide-react';
 
 const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
   // Dummy value for consecutive days (0-28+)
@@ -20,29 +20,30 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
   ];
 
   return (
+    // Start main container with flexbox
     <motion.div
-      className="flex rounded-lg shadow-md mb-4 overflow-hidden" // Main container with flexbox
+      className="flex rounded-lg shadow-md mb-4 h-36 overflow-hidden"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onCardClick(habit.id)}
     >
-      {/* White section (left side) */}
-      <div className="flex-grow bg-white p-4 pr-8">
-        {/* Top row: Check button and Habit title */}
-        <div className="flex items-center mb-4">
-          <h3 className="text-style-bastText flex-grow text-center">{habit.name}</h3>
-        </div>
+      
+      {/* Start white section (left side of the card) */}
+      <div className="flex-grow bg-white pt-2 pl-4 pr-8">
+        
+        {/* Top row: Habit title */}
+        <h3 className="text-style-subheading text-left mb-3">{habit.name}</h3>
 
-        {/* Middle row: Progress bar */}
-        <div className="mb-3 flex justify-between items-center">
-
+        {/* Middle row: */}
+        <div className="mb-1 flex justify-between items-center">
+          {/* Check button */}
           <IconButton
             icon={Check}
             onClick={(e) => handleAction(e, onToggle)}
             isActive={habit.isCompleted}
             className={`mr-4 ${habit.isCompleted ? 'bg-orange-main text-white' : 'bg-orange-100 text-white'}`}
           />
-          
+          {/* Progress bar */}
           <div className="relative w-full h-0.5 bg-orange-100 rounded-full">
             <div 
               className="absolute top-0 left-0 h-full bg-orange-main rounded-full"
@@ -63,32 +64,40 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Bottom row: Status icons and More button */}
-        <div className="flex justify-between items-center">
-          <div className="flex">
-            {habit.isHighlighted && <Star className="text-gray-200 mr-2 h-5 w-5" />}
-            {habit.isRecurring && <Repeat className="text-gray-200 mr-2 h-5 w-5" />}
-            {habit.priority && <Flag className="text-gray-200 mr-2 h-5 w-5" />}
-            {habit.deadline && <Calendar className="text-gray-200 mr-2 h-5 w-5" />}
-            {habit.reminder && <AlarmClock className="text-gray-200 mr-2 h-5 w-5" />}
           </div>
-          <IconButton 
-            icon={MoreHorizontal}
-            onClick={(e) => onOpenMenu(e)}
-          />
-        </div>
-      </div>
 
-      {/* Orange section (right side) */}
+          {/* Bottom row: front card icons and More button */} 
+          <div className="flex justify-between items-center">
+            <div className="flex">
+              {habit.isHighlighted && <Star className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.isRecurring && <Repeat className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.priority && <Flag className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.deadline && <Calendar className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.reminder && <AlarmClock className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.priority && <Lock className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.deadline && <Palette className="text-gray-200 mr-2 h-5 w-5" />}
+              {habit.reminder && <Trash className="text-gray-200 mr-2 h-5 w-5" />}
+            </div>
+            <IconButton 
+              icon={MoreHorizontal}
+              onClick={(e) => onOpenMenu(e)}
+            />
+          </div>
+        </div>
+        {/* End white section (left side of the card) */}
+      
+      {/* Start orange section (right side of the card) */}
       <div className="bg-orange-main w-20 flex flex-col items-center justify-center">
         <span className="text-2xl font-bold text-white">{consecutiveDays}</span>
         <span className="text-xs font-medium text-white">
           {consecutiveDays === 1 ? 'day' : 'days'}
         </span>
       </div>
+      {/* End orange section (right side of the card) */}
+      
     </motion.div>
+    // End main container with flexbox
+    
   );
 };
 
