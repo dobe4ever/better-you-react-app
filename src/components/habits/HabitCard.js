@@ -32,7 +32,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
           />
           <div className="w-full">
             {/* First Progress Bar */}
-            <div className="relative w-full h-1 bg-orange-100 rounded-full mb-2">
+            <div className="relative w-full h-3 bg-orange-100 rounded-full mb-2">
               <div 
                 className="absolute top-0 left-0 h-full bg-orange-main rounded-full"
                 style={{ width: `${(consecutiveDays / totalDays) * 100}%` }}
@@ -43,7 +43,7 @@ const HabitCard = ({ habit, onToggle, onOpenMenu, onCardClick }) => {
               {[...Array(totalDays)].map((_, index) => (
                 <div 
                   key={index}
-                  className={`w-4 h-4 rounded-full ${index < consecutiveDays ? 'bg-orange-main' : 'bg-orange-100'}`}
+                  className={`w-3 h-3 rounded-full ${index < consecutiveDays ? 'bg-orange-main' : 'bg-orange-100'}`}
                 ></div>
               ))}
             </div>
