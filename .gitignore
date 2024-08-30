@@ -22,3 +22,6 @@ logs/
 # Replit specific files
 .replit
 
+.py
+/dev-ai
+yarn.lock
